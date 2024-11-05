@@ -1,0 +1,6 @@
+@InsertKph_HostAddress = http://localhost:5032
+
+GET {{InsertKph_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

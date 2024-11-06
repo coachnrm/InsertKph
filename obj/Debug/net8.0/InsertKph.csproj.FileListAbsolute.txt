@@ -136,3 +136,4 @@
 /Users/home/Desktop/InsertKph/obj/Debug/net8.0/InsertKph.pdb
 /Users/home/Desktop/InsertKph/obj/Debug/net8.0/InsertKph.genruntimeconfig.cache
 /Users/home/Desktop/InsertKph/obj/Debug/net8.0/ref/InsertKph.dll
+/Users/home/Desktop/InsertKph/obj/Debug/net8.0/InsertKph.sourcelink.json

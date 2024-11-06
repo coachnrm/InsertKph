@@ -41,8 +41,9 @@ namespace InsertKph.Migrations
                 name: "IpdProgressNoteItems",
                 columns: table => new
                 {
+                    progress_note_item_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     progress_note_id = table.Column<int>(type: "int", nullable: false),
-                    progress_note_item_id = table.Column<int>(type: "int", nullable: false),
                     an = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     progress_note_item_type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     progress_note_item_detail = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -54,29 +55,18 @@ namespace InsertKph.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IpdProgressNoteItems", x => x.progress_note_id);
-                    table.ForeignKey(
-                        name: "FK_IpdProgressNoteItems_IpdProgressNote_progress_note_id",
-                        column: x => x.progress_note_id,
-                        principalTable: "IpdProgressNote",
-                        principalColumn: "progress_note_id",
-                        onDelete: ReferentialAction.Cascade);
+                    table.PrimaryKey("PK_IpdProgressNoteItems", x => x.progress_note_item_id);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_IpdProgressNote_progress_note_id",
-                table: "IpdProgressNote",
-                column: "progress_note_id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "IpdProgressNoteItems");
+                name: "IpdProgressNote");
 
             migrationBuilder.DropTable(
-                name: "IpdProgressNote");
+                name: "IpdProgressNoteItems");
         }
     }
 }

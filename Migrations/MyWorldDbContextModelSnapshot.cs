@@ -82,15 +82,16 @@ namespace InsertKph.Migrations
 
                     b.HasKey("progress_note_id");
 
-                    b.HasIndex("progress_note_id");
-
                     b.ToTable("IpdProgressNote");
                 });
 
             modelBuilder.Entity("InsertKph.Models.IpdProgressNoteItem", b =>
                 {
-                    b.Property<int>("progress_note_id")
+                    b.Property<int>("progress_note_item_id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("progress_note_item_id"));
 
                     b.Property<string>("an")
                         .IsRequired()
@@ -104,6 +105,9 @@ namespace InsertKph.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("progress_note_id")
+                        .HasColumnType("int");
+
                     b.Property<string>("progress_note_item_detail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -111,9 +115,6 @@ namespace InsertKph.Migrations
                     b.Property<string>("progress_note_item_detail2")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("progress_note_item_id")
-                        .HasColumnType("int");
 
                     b.Property<string>("progress_note_item_type")
                         .IsRequired()
@@ -127,25 +128,9 @@ namespace InsertKph.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("progress_note_id");
+                    b.HasKey("progress_note_item_id");
 
                     b.ToTable("IpdProgressNoteItems");
-                });
-
-            modelBuilder.Entity("InsertKph.Models.IpdProgressNoteItem", b =>
-                {
-                    b.HasOne("InsertKph.Models.IpdProgressNote", "IpdProgressNote")
-                        .WithMany("IpdProgressNoteItems")
-                        .HasForeignKey("progress_note_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("IpdProgressNote");
-                });
-
-            modelBuilder.Entity("InsertKph.Models.IpdProgressNote", b =>
-                {
-                    b.Navigation("IpdProgressNoteItems");
                 });
 #pragma warning restore 612, 618
         }

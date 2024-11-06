@@ -4,6 +4,7 @@ namespace InsertKph.Models
 {
     public class IpdProgressNote
     {
+        [Key]
         public int progress_note_id {get; set;}
         public string an {get; set;}
         public DateOnly progress_note_date {get; set;} 
@@ -20,7 +21,7 @@ namespace InsertKph.Models
         public DateOnly pre_order_progress_note_date {get; set;}
 
         public string pre_order_progress_note_time {get; set;}
-        public List<IpdProgressNoteItem> IpdProgressNoteItems {get; set;} = new List<IpdProgressNoteItem>();
+    
     }
 
     // public class IpdProgressNote
